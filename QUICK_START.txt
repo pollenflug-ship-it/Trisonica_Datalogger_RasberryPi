@@ -1,0 +1,57 @@
+===================================
+TRISONICA PORTABLE - QUICK START
+===================================
+
+100% OFFLINE - NO INTERNET NEEDED!
+
+WHAT'S INCLUDED:
+- Complete Trisonica data logger
+- Minimal dependencies (pyserial only)
+- Enhanced console interface with live updates
+- No downloads, no updates, no internet!
+- Works on Raspberry Pi 3 Model B+
+
+INSTALLATION:
+1. Copy this entire "Trisonica_Portable" folder to your Pi
+   - Desktop/Trisonica/ (or any location)
+
+2. Open terminal and navigate to folder:
+   cd Desktop/Trisonica/
+
+3. Fix permissions (if needed):
+   bash fix_permissions.sh
+
+4. Run installer:
+   ./install.sh
+
+4. Set correct UTC time (CRITICAL!):
+   sudo timedatectl set-timezone UTC
+   sudo date -s "2025-09-28 14:30:00"  # Use current UTC time!
+
+5. Connect Trisonica to Pi via USB
+
+6. Start logging:
+   ./start_logger.sh
+
+   You'll see status updates every 0.5 seconds with:
+   - Current wind speed, direction, temperature
+   - Data collection rate and statistics
+   - Log file information
+
+THAT'S IT! Data saves automatically.
+
+FILES CREATED:
+- TrisonicaData_2025-09-28_123000.csv
+- TrisonicaStats_2025-09-28_123000.csv
+
+STORAGE:
+- External USB/SD: /mnt/data_sd/ (preferred)
+- Local backup: ./data/ (automatic fallback)
+
+CONTROL:
+- Start: ./start_logger.sh
+- Test: ./test_connection.sh
+- Status: ./check_status.sh
+- Stop: Press Ctrl+C
+
+NO INTERNET NEEDED - EVERYTHING INCLUDED!
