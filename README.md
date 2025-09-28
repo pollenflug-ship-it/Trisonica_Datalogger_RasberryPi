@@ -1,10 +1,10 @@
 # Trisonica Datalogger RasberryPi
-![Terminal View](Terminal_View.png)
+
 ## Overview
 **100% OFFLINE** data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
 
 **NO INTERNET REQUIRED** - Everything included in this folder!
-
+![Terminal View](Terminal_View.png)
 ## What's Included
 - **Python data logger** with real-time CSV output
 - **All dependencies** (pyserial only - lightweight!)
