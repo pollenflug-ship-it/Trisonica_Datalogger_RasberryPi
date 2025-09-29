@@ -1,7 +1,9 @@
-# Trisonica Datalogger RasberryPi
+# Trisonica Li-550P Mini Datalogger RaspberryPi
 
 ## Overview
-Data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
+Data logging system for Trisonica Li-550P Mini anemometer on Raspberry Pi 3 Model B+.
+
+**Manual**: [LI-COR Li-550P Documentation](https://www.licor.com/support/LI-550/manuals.html)
 
 ![Terminal View](Terminal_View.png)
 
@@ -52,7 +54,7 @@ date -u  # Should show accurate UTC time
 
 ### 3. Connect Hardware
 - **HDMI display** (if using): Connect HDMI cable **before** powering on the Raspberry Pi for best compatibility
-- **Trisonica device** -> USB -> **Pi USB port**
+- **Trisonica Li-550P Mini** -> USB -> **Pi USB port**
 - **External SD/USB card** -> USB adapter -> **Pi USB port** (optional, for data storage)
 
 ### 4. Anemometer Placement (Critical for Data Quality)
@@ -193,7 +195,7 @@ chmod +x *.sh *.py
 ### System Requirements
 - **Raspberry Pi 3 Model B+** (ARMv7)
 - **Python 3.7+** (included with Raspberry Pi OS - COMPATIBLE!)
-- **USB port** for Trisonica connection
+- **USB port** for Trisonica Li-550P Mini connection
 - **Optional**: External USB storage for data
 
 ### Dependencies Included
