@@ -1,19 +1,19 @@
 # Trisonica Datalogger RasberryPi
 
 ## Overview
-**100% OFFLINE** data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
+Data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
 
-**NO INTERNET REQUIRED** - Everything included in this folder!
+**Operates offline** - Everything included in this folder! Can also connect to internet for automatic UTC time synchronization when available.
 
-![Terminal View](Terminal_View.png)
 ## What's Included
 - **Python data logger** with real-time CSV output
 - **All dependencies** (pyserial only - lightweight!)
-- **Enhanced console interface** with periodic status updates
+- **Enhanced console interface** with periodic status updates and LED indicators
 - **Automatic UTC time sync** when internet available
 - **Automatic device detection** and reconnection
 - **Dual storage support**: External SD/USB + local backup
-- **No internet required** - fully portable
+- **Raspberry Pi LED indicators** show system status and logging activity
+- **Operates offline or online** - fully portable with optional internet connectivity
 
 ---
 
@@ -49,6 +49,7 @@ date -u  # Should show accurate UTC time
 ```
 
 ### 3. Connect Hardware
+- **HDMI display** (if using): Connect HDMI cable **before** powering on the Raspberry Pi for best compatibility
 - **Trisonica device** -> USB -> **Pi USB port**
 - **External SD/USB card** -> USB adapter -> **Pi USB port** (optional, for data storage)
 
@@ -76,6 +77,10 @@ date -u  # Should show accurate UTC time
 
 ### Enhanced Terminal Logger (`datalogger_simple.py`)
 - **Clean text interface** with periodic status updates
+- **LED status indicators** using Raspberry Pi built-in LEDs:
+  - **Activity LED (green)**: Blinks when actively logging data
+  - **Brief flashes**: Indicate data writes to storage
+  - **LED off**: System idle or stopped
 - **Live data readings** every 0.5 seconds (2Hz) showing:
   - Current wind speed, direction, temperature
   - Data collection rate and error statistics
@@ -213,14 +218,14 @@ Trisonica_Portable/
 ├── install.sh                 # Main installer
 ├── fix_permissions.sh         # Permission fixer
 ├── datalogger_simple.py       # Simple console logger
-├── datalogger_rich.py         # Rich visual logger
+├── datalogger_simple.py       # Console logger with LED indicators
 ├── python_packages/           # Dependencies
 │   ├── pyserial-3.5-*.whl   # Serial communication
-│   ├── rich-14.1.0-*.whl    # Rich UI library
+│   ├── [minimal dependencies]  # Lightweight packages only
 │   └── [other dependencies]
 └── [Generated after install:]
     ├── start_logger.sh        # Start simple logger
-    ├── start_rich.sh          # Start rich logger
+    ├── start_logger.sh        # Start console logger
     ├── test_connection.sh     # Connection test
     ├── check_status.sh        # Status checker
     ├── data/                  # Local data storage
