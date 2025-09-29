@@ -4,11 +4,12 @@
 **100% OFFLINE** data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
 
 **NO INTERNET REQUIRED** - Everything included in this folder!
-![Terminal View](Terminal_View.png)
+
 ## What's Included
 - **Python data logger** with real-time CSV output
 - **All dependencies** (pyserial only - lightweight!)
 - **Enhanced console interface** with periodic status updates
+- **Automatic UTC time sync** when internet available
 - **Automatic device detection** and reconnection
 - **Dual storage support**: External SD/USB + local backup
 - **No internet required** - fully portable
@@ -31,28 +32,40 @@ bash fix_permissions.sh
 ./install.sh
 ```
 
-### 2. Set Time & Timezone
+### 2. Time Setup (Automatic + Manual Options)
 ```bash
-# Set timezone to UTC (recommended for data logging)
-sudo timedatectl set-timezone UTC
+# OPTION A: Automatic UTC Sync (Recommended)
+# Connect Pi to WiFi/Ethernet, then run:
+./start_logger.sh
+# System will auto-detect internet and sync UTC time
 
-# Set current UTC time (IMPORTANT!)
+# OPTION B: Manual UTC Setting (if no internet)
+sudo timedatectl set-timezone UTC
 sudo date -s "2025-09-28 14:30:00"  # Use current UTC time
 
-# Verify
-date  # Should show UTC time
+# Verify time
+date -u  # Should show accurate UTC time
 ```
 
 ### 3. Connect Hardware
 - **Trisonica device** -> USB -> **Pi USB port**
 - **External SD/USB card** -> USB adapter -> **Pi USB port** (optional, for data storage)
 
-### 4. Start Logging
+### 4. Anemometer Placement (Critical for Data Quality)
+**IMPORTANT**: Proper placement is essential for accurate readings
+- **Minimum clearance**: 3-5 meters from obstacles in all directions
+- **Avoid**: Buildings, trees, walls, vehicles, or other obstructions
+- **Ultrasonic sensors** are highly sensitive to reflections and turbulence
+- **Poor placement** is the primary cause of corrupted/error readings
+- **Ideal setup**: Open field with unobstructed airflow
+
+### 5. Start Logging
 ```bash
+# Auto-syncs UTC time if internet available, then starts logging
 ./start_logger.sh
 ```
 
-### 5. Stop Logging
+### 6. Stop Logging
 - Press **Ctrl+C**
 - Data automatically saved
 
@@ -89,7 +102,7 @@ TrisonicaStats_2025-09-28_143000.csv    # Statistical summaries
 | S    | Wind speed  | m/s  | 0-50  |
 | S2   | Alt wind speed | m/s | 0-50  |
 | D    | Wind direction | deg | 0-360 |
-| T    | Temperature | C | -40 to +60 |
+| T    | Temperature | °C | -40 to +60 |
 | H    | Humidity | % | 0-100 |
 | P    | Pressure | hPa | 900-1100 |
 
@@ -98,7 +111,7 @@ TrisonicaStats_2025-09-28_143000.csv    # Statistical summaries
 ## Control Scripts
 
 ### Main Operations
-- **`start_logger.sh`** - Start console logger
+- **`start_logger.sh`** - Auto-sync UTC time + start console logger
 - **`test_connection.sh`** - Test device connection (30 sec)
 - **`check_status.sh`** - Check system status
 
@@ -134,10 +147,13 @@ sudo mount /dev/sda1 /mnt/data_sd  # Adjust device as needed
 ### Time Issues
 ```bash
 # Check current time
-date
+date -u
 timedatectl status
 
-# Reset time (use current UTC)
+# Auto-sync if internet available
+./start_logger.sh  # Will auto-sync UTC before starting
+
+# Manual time setting (if no internet)
 sudo date -s "YYYY-MM-DD HH:MM:SS"
 ```
 
@@ -166,10 +182,18 @@ chmod +x *.sh *.py
 - **Ultra-lightweight** - minimal dependencies for maximum compatibility
 
 ### Data Quality Features
-- **Error detection** for sensor malfunctions
+- **Error detection** for sensor malfunctions and invalid readings
+- **Temperature validation** (negative values flagged as errors)
 - **Connection monitoring** with automatic reconnection
 - **Data validation** with quality flags
 - **Statistical analysis** with error rates
+
+### Common Error Sources
+- **Poor anemometer placement** (primary cause - needs 3-5m clearance)
+- **Ultrasonic path interference** from nearby obstacles
+- **Loose wire connections** (secure all connections)
+- **Sensor malfunctions** (flagged as -99.x values)
+- **Data quality target**: Error rate should be < 5% for reliable measurements
 
 ### Storage Management
 - **Automatic CSV headers** based on detected parameters
@@ -209,7 +233,7 @@ Trisonica_Portable/
 ### Common Issues
 1. **"Permission denied"** - Run `bash fix_permissions.sh`
 2. **"No device found"** - Check USB connection, try `./test_connection.sh`
-3. **"Wrong time in data"** - Set UTC time before logging
+3. **"Wrong time in data"** - Connect to WiFi/ethernet and run `./start_logger.sh` for auto-sync
 4. **"Storage full"** - Use external SD card or clean `./data/` folder
 
 ### Data Analysis
