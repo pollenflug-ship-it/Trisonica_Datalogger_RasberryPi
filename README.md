@@ -9,7 +9,7 @@ Data logging system for Trisonica Li-550P Mini anemometer on Raspberry Pi 3 Mode
 
 **Anemometer Manuals**: [LI-COR Li-550P Documentation](https://www.licor.com/support/LI-550/manuals.html)
 
-**Quick Guide: https://www.youtube.com/watch?v=jU6U_dG5DDc)
+**Quick Guide**: https://www.youtube.com/watch?v=jU6U_dG5DDc)
 
 ## What's Included
 - **Python data logger** with real-time CSV output
