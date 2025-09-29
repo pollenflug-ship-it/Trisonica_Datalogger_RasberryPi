@@ -5,7 +5,7 @@
 
 **NO INTERNET REQUIRED** - Everything included in this folder!
 
-!(Terminal View)[Terminal_View.png]
+![Terminal View](Terminal_View.png)
 ## What's Included
 - **Python data logger** with real-time CSV output
 - **All dependencies** (pyserial only - lightweight!)
