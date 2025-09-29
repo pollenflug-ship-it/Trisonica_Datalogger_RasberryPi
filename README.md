@@ -91,6 +91,18 @@ date -u  # Should show accurate UTC time
 - **Comprehensive error handling** and device reconnection
 
 ---
+## Configure the Trisonica
+```bash
+screen /dev/ttyUSB0 115200
+```
+Make sure to use the actual port name the trisonica is connected to.
+
+![Data Stream](Datastream.png)
+Gives you the raw datastream once the anemometer connected and running. 
+
+![Trisonica Menu](Trisonica_Menu.png)
+Pressing ESC will quit the datastream and opens the trisonica configuration settings.
+
 
 ## Data Storage
 
