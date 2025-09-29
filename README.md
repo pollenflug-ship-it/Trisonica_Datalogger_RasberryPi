@@ -3,6 +3,8 @@
 ## Overview
 Data logging system for Trisonica Mini anemometer on Raspberry Pi 3 Model B+.
 
+![Terminal View](Terminal_View.png)
+
 **Operates offline** - Everything included in this folder! Can also connect to internet for automatic UTC time synchronization when available.
 
 ## What's Included
