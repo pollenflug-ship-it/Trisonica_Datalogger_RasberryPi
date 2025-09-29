@@ -3,9 +3,9 @@
 ## Overview
 Data logging system for Trisonica Li-550P Mini anemometer on Raspberry Pi 3 Model B+.
 
-**Anemometer Manuals**: [LI-COR Li-550P Documentation](https://www.licor.com/support/LI-550/manuals.html)
-
 ![Terminal View](Terminal_View.png)
+
+**Anemometer Manuals**: [LI-COR Li-550P Documentation](https://www.licor.com/support/LI-550/manuals.html)
 
 **Operates offline** - Everything included in this folder! Can also connect to internet for automatic UTC time synchronization when available.
 
