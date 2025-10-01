@@ -123,8 +123,8 @@ TrisonicaStats_2025-09-28_143000.csv    # Statistical summaries
 ### Data Parameters
 | Code | Description | Unit | Range |
 |------|-------------|------|-------|
-| S    | Wind speed  | m/s  | 0-50  |
-| S2   | Alt wind speed | m/s | 0-50  |
+| S    | 3D Wind speed  | m/s  | 0-50  |
+| S2   | 2D horizontal Windspeed | m/s | 0-50  |
 | D    | Wind direction | deg | 0-360 |
 | T    | Temperature | °C | -40 to +60 |
 | H    | Humidity | % | 0-100 |
